@@ -10,10 +10,8 @@ import UIKit
 
 
 let introVc = IntroController()
-print(introVc.view)
 let navController = UINavigationController(rootViewController: introVc)
 navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-print(introVc.view.frame)
 navController.view.frame = introVc.view.frame
 
 PlaygroundPage.current.liveView = navController.view

@@ -1,7 +1,4 @@
-import Foundation
-import PlaygroundSupport
 import UIKit
-
 
 public class SadController: UIViewController {
     var probability: Float = 0.0
@@ -31,11 +28,16 @@ public class SadController: UIViewController {
                 imageView.frame = CGRect(x: 334, y: 150, width: 165, height: 165)
             })
             
+            print("Probability: \(self.probability)")
+//            Defines probability subview, based on predicted results
+            let probabilityView = UILabel(frame: CGRect(x: 325, y: 638, width: 184, height: 22))
+//            probabilityView.center.x = self.view.center.x
+            probabilityView.textColor = .white
+            probabilityView.text = "Probability: \(self.probability)%"
+            self.view.addSubview(probabilityView)
             
             let buttonWidth: CGFloat = 359.0
             let buttonHeight: CGFloat = 56.0
-            
-            print("Probability: \(self.probability)")
             
             //            Agree Button definition
             let agreeButton : UIButton = UIButton()

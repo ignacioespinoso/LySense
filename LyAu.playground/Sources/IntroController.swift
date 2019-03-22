@@ -9,6 +9,7 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     let myPickerData = [String](arrayLiteral: "Peter", "Jane", "Paul", "Mary", "Kevin", "Lucy")
     
+    
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -31,6 +32,7 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let imageView = UIImageView(image: image)
             imageView.frame = self.view.frame
             self.view.addSubview(imageView)
+
         } else {
             self.view.backgroundColor = .red
         }
@@ -94,24 +96,27 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
 //    Proccess content coming from the text field
     @objc func submitText2() {
-        if let lyric = textWriter.text {
-            print("\(lyric)")
-            var isHappy: Bool
-            var probability: Float
-            (isHappy, probability) = isHappyLyric(text: lyric)   // Right now always returns true
-            if isHappy {
-                let newController = HappyController()
-                newController.probability = probability
-                self.navigationController?.pushViewController(newController, animated: true)
-                
-            } else {
-                let newController = SadController()
-                newController.probability = probability
-                self.navigationController?.pushViewController(newController, animated: true)
-            }
-        } else {
-            print("ERROR! Submited from TextField without content")
-        }
+        let newController = SadController()
+        newController.probability = 0.5
+        self.navigationController?.pushViewController(newController, animated: true)
+//        if let lyric = textWriter.text {
+//            print("\(lyric)")
+//            var isHappy: Bool
+//            var probability: Float
+//            (isHappy, probability) = isHappyLyric(text: lyric)   // Right now always returns true
+//            if isHappy {
+//                let newController = HappyController()
+//                newController.probability = probability
+//                self.navigationController?.pushViewController(newController, animated: true)
+//                
+//            } else {
+//                let newController = SadController()
+//                newController.probability = probability
+//                self.navigationController?.pushViewController(newController, animated: true)
+//            }
+//        } else {
+//            print("ERROR! Submited from TextField without content")
+//        }
     }
     
 }

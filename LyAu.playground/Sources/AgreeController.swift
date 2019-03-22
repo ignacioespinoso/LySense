@@ -16,7 +16,6 @@ public class AgreeController : UIViewController {
     
     
     public override func viewDidLoad() {
-
         let buttonWidth: CGFloat = 359.0
         let buttonHeight: CGFloat = 56.0
         
@@ -33,5 +32,4 @@ public class AgreeController : UIViewController {
         let newController = IntroController()
         self.navigationController?.setViewControllers([newController], animated: true)
     }
-    
 }
