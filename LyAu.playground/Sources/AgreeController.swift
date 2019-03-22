@@ -4,7 +4,7 @@ import UIKit
 
 public class AgreeController : UIViewController {
     public override func loadView() {
-        self.view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 812))
+        self.view = UIView(frame: CGRect(x: 0, y: 0, width: 834, height: 1112))
         if let image = UIImage(named: "AgreeBackground") {
             let imageView = UIImageView(image: image)
             imageView.frame = self.view.frame
@@ -22,7 +22,7 @@ public class AgreeController : UIViewController {
         
 //            Back to the beginning Button definition
         let agreeButton : UIButton = UIButton()
-        agreeButton.frame = CGRect(x: 8, y: 508, width: buttonWidth, height: buttonHeight)
+        agreeButton.frame = CGRect(x: 238, y: 621, width: buttonWidth, height: buttonHeight)
         let agreeImage = UIImage(named:"goToIntroButton")
         agreeButton.setImage(agreeImage, for: .normal)
         agreeButton.addTarget(self, action: #selector(backToIntro), for: .touchUpInside)

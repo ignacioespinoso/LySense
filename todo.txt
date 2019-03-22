@@ -1,0 +1,4 @@
+TODO:
+- Adjust navigation bar
+- Add song picker
+- Pass data to prediction 
