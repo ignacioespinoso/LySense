@@ -3,11 +3,31 @@ import PlaygroundSupport
 import UIKit
 
 
-public class IntroController: UIViewController {
+public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    let textPickerField = UITextField()
+    let textWriter = UITextView()
+    
+    let myPickerData = [String](arrayLiteral: "Peter", "Jane", "Paul", "Mary", "Kevin", "Lucy")
+    
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return myPickerData.count
+    }
+    
+    public func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return myPickerData[row]
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textPickerField.text = myPickerData[row]
+    }
     
     public override func loadView() {
         self.view = UIView(frame: CGRect(x: 0, y: 0, width: 834, height: 1112))
-        
         if let image = UIImage(named: "IntroBackground") {
             let imageView = UIImageView(image: image)
             imageView.frame = self.view.frame
@@ -23,10 +43,15 @@ public class IntroController: UIViewController {
     public override func viewDidLoad() {
         
 //        Defines picker view
-        let textPicker = UITextField(frame: CGRect(x: 230, y: 399, width: 375, height: 60))
-        textPicker.placeholder = "Pick a song..."
-//        textPicker.inputView = UIPickerView(frame: textPicker.frame)
-        self.view.addSubview(textPicker)
+        
+        textPickerField.frame = CGRect(x: 230, y: 399, width: 375, height: 60)
+        textPickerField.placeholder = "Pick a song..."
+        let picker = UIPickerView()
+
+        textPickerField.inputView = picker
+        picker.delegate = self
+        picker.dataSource = self
+        self.view.addSubview(textPickerField)
         
 //        Defines lyric submission button using the picker
         let submitButton : UIButton = UIButton()
@@ -37,7 +62,7 @@ public class IntroController: UIViewController {
         self.view.addSubview(submitButton)
         
 //        Defines text field view
-        let textWriter = UITextView(frame: CGRect(x: 230, y: 649, width: 375, height: 240))
+        textWriter.frame = CGRect(x: 230, y: 649, width: 375, height: 240)
         textWriter.text = "Type or paste your chosen lyric..."
         self.view.addSubview(textWriter)
         
