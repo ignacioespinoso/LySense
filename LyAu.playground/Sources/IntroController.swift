@@ -7,7 +7,7 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let textPickerField = UITextField()
     let textWriter = UITextView()
     
-    let myPickerData = [String](arrayLiteral: "Peter", "Jane", "Paul", "Mary", "Kevin", "Lucy")
+    let myPickerData = [String](arrayLiteral: "Portugal the man - Feel it Still", "Ed Sheeran - Shape of You", "Camila Cabello - Havana", "Justin Timberlake - Cry Me a River", "Queen - Bohemian Rapsody")
     
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -74,7 +74,23 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
 //    Proccess content coming from song picker
     @objc func submitText() {
-        if let lyric = textPickerField.text {
+        
+//        Extracts lyric file into string
+        if let title = textPickerField.text {
+            var lyric = ""
+            
+            if title == "Portugal the man - Feel it Still"{
+               lyric = loadLyric(name: "lyric1", withExtension: ".txt")
+            } else if title == "Ed Sheeran - Shape of You" {
+                lyric = loadLyric(name: "lyric2", withExtension: ".txt")
+            } else if title == "Camila Cabello - Havana" {
+                lyric = loadLyric(name: "lyric3", withExtension: ".txt")
+            } else if title == "Justin Timberlake - Cry Me a River" {
+                lyric = loadLyric(name: "lyric4", withExtension: ".txt")
+            } else {
+                lyric = loadLyric(name: "lyric5", withExtension: ".txt")
+            }
+            
             print("\(lyric)")
             var isHappy: Bool
             var probability: Float
@@ -117,6 +133,19 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
 //        } else {
 //            print("ERROR! Submited from TextField without content")
 //        }
+    }
+    
+    public func loadLyric(name:String, withExtension:String) -> String {
+        
+        if let lyricURL = Bundle.main.url(forResource: name, withExtension: withExtension) {
+            do {
+                return try String(contentsOf: lyricURL, encoding: .utf8)
+            }
+            catch{
+                print("Lyric not found!")
+            }
+        }
+        return "NULL"
     }
     
 }
