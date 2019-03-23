@@ -7,8 +7,7 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let textPickerField = UITextField()
     let textWriter = UITextView()
     
-    let myPickerData = [String](arrayLiteral: "Portugal the man - Feel it Still", "Ed Sheeran - Shape of You", "Camila Cabello - Havana", "Justin Timberlake - Cry Me a River", "Queen - Bohemian Rapsody")
-    
+    let myPickerData = [String](arrayLiteral: "Portugal the man - Feel it Still", "Ed Sheeran - Shape of You", "Camila Cabello - Havana", "Justin Timberlake - Cry Me a River", "Queen - Bohemian Rapsody", "Smash Mouth - All Star", "Gary Jules - Mad World", "ABBA - Dancing Queen", "Backstreet Boys - I Want It That Way", "The Mamas & the Papas - California Dreamin")
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -80,21 +79,32 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
             var lyric = ""
             
             if title == "Portugal the man - Feel it Still"{
-               lyric = loadLyric(name: "lyric1", withExtension: ".txt")
+               lyric = loadToString(name: "lyric1", withExtension: ".txt")
             } else if title == "Ed Sheeran - Shape of You" {
-                lyric = loadLyric(name: "lyric2", withExtension: ".txt")
+                lyric = loadToString(name: "lyric2", withExtension: ".txt")
             } else if title == "Camila Cabello - Havana" {
-                lyric = loadLyric(name: "lyric3", withExtension: ".txt")
+                lyric = loadToString(name: "lyric3", withExtension: ".txt")
             } else if title == "Justin Timberlake - Cry Me a River" {
-                lyric = loadLyric(name: "lyric4", withExtension: ".txt")
+                lyric = loadToString(name: "lyric4", withExtension: ".txt")
+            } else if title == "Queen - Bohemian Rapsody" {
+                lyric = loadToString(name: "lyric5", withExtension: ".txt")
+            } else if title == "Smash Mouth - All Star" {
+                lyric = loadToString(name: "lyric6", withExtension: ".txt")
+            } else if title == "Gary Jules - Mad World" {
+                lyric = loadToString(name: "lyric7", withExtension: ".txt")
+            } else if title == "ABBA - Dancing Queen" {
+                lyric = loadToString(name: "lyric8", withExtension: ".txt")
+            } else if title == "Backstreet Boys - I Want It That Way" {
+                lyric = loadToString(name: "lyric9", withExtension: ".txt")
             } else {
-                lyric = loadLyric(name: "lyric5", withExtension: ".txt")
+                lyric = loadToString(name: "lyric10", withExtension: ".txt")
             }
             
-            print("\(lyric)")
+            print("Lyric:\n\(lyric)")
             var isHappy: Bool
             var probability: Float
-            (isHappy, probability) = isHappyLyric(text: lyric)   // Right now always returns true
+//            Let's use the Machine Learning model!
+            (isHappy, probability) = isHappyLyric(text: lyric)
             if isHappy {
                 let newController = HappyController()
                 newController.probability = probability
@@ -112,31 +122,29 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
 //    Proccess content coming from the text field
     @objc func submitText2() {
-        let newController = SadController()
-        newController.probability = 0.5
-        self.navigationController?.pushViewController(newController, animated: true)
-//        if let lyric = textWriter.text {
-//            print("\(lyric)")
-//            var isHappy: Bool
-//            var probability: Float
-//            (isHappy, probability) = isHappyLyric(text: lyric)   // Right now always returns true
-//            if isHappy {
-//                let newController = HappyController()
-//                newController.probability = probability
-//                self.navigationController?.pushViewController(newController, animated: true)
-//                
-//            } else {
-//                let newController = SadController()
-//                newController.probability = probability
-//                self.navigationController?.pushViewController(newController, animated: true)
-//            }
-//        } else {
-//            print("ERROR! Submited from TextField without content")
-//        }
+        if let lyric = textWriter.text {
+            print("Lyric:\n\(lyric)")
+            var isHappy: Bool
+            var probability: Float
+//            Let's use the Machine Learning model!
+            (isHappy, probability) = isHappyLyric(text: lyric)
+            if isHappy {
+                let newController = HappyController()
+                newController.probability = probability
+                self.navigationController?.pushViewController(newController, animated: true)
+                
+            } else {
+                let newController = SadController()
+                newController.probability = probability
+                self.navigationController?.pushViewController(newController, animated: true)
+            }
+        } else {
+            print("ERROR! Submited from TextField without content")
+        }
     }
     
-    public func loadLyric(name:String, withExtension:String) -> String {
-        
+//    Helper function to load text file into a string
+    public func loadToString(name:String, withExtension:String) -> String {
         if let lyricURL = Bundle.main.url(forResource: name, withExtension: withExtension) {
             do {
                 return try String(contentsOf: lyricURL, encoding: .utf8)

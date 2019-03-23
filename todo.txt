@@ -1,4 +1,0 @@
-TODO:
-- Adjust navigation bar: forget about it
-- Add song picker: done
-- Pass data to prediction: done
