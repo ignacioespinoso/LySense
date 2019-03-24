@@ -53,6 +53,7 @@ navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
 navController.view.frame = introVc.view.frame
 
 PlaygroundPage.current.liveView = navController.view
-//run()
+
+
 
 //: [Next](@next)

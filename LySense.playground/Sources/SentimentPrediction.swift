@@ -2,6 +2,7 @@ import Foundation
 import CoreML
 import NaturalLanguage
 
+// Applies the machine learning model to the given lyric
 func isHappyLyric(text: String) -> (result:Bool, prob: Float) {
     do {
         let sentimentPredictor = try NLModel(mlModel: LyricClassifier().model)

@@ -2,11 +2,12 @@ import Foundation
 import PlaygroundSupport
 import UIKit
 
-
+// Controller for the home screen
 public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     let textPickerField = UITextField()
     let textWriter = UITextView()
     
+//    Sets picker options names
     let myPickerData = [String](arrayLiteral: "Portugal the man - Feel it Still", "Ed Sheeran - Shape of You", "Camila Cabello - Havana", "Justin Timberlake - Cry Me a River", "Queen - Bohemian Rapsody", "Smash Mouth - All Star", "Gary Jules - Mad World", "ABBA - Dancing Queen", "Backstreet Boys - I Want It That Way", "The Mamas & the Papas - California Dreamin")
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {

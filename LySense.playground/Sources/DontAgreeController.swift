@@ -2,7 +2,9 @@ import Foundation
 import PlaygroundSupport
 import UIKit
 
+// Disagree View/Controller implementation
 public class DontAgreeController: UIViewController {
+//        Sets view background and frame size
     public override func loadView() {
         self.view = UIView(frame: CGRect(x: 0, y: 0, width: 834, height: 1112))
         if let image = UIImage(named: "DontAgreeBackground") {

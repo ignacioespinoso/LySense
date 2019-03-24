@@ -2,8 +2,10 @@ import Foundation
 import PlaygroundSupport
 import UIKit
 
+// Agree View/Controller implementation
 public class AgreeController : UIViewController {
     public override func loadView() {
+//        Sets view background and frame size
         self.view = UIView(frame: CGRect(x: 0, y: 0, width: 834, height: 1112))
         if let image = UIImage(named: "AgreeBackground") {
             let imageView = UIImageView(image: image)
