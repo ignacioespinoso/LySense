@@ -30,6 +30,7 @@
  
  With this given motivation, I used Apple's CoreML library to build a Machine Learning model in a playground environment. My model classifies song lyrics as either Happy or Sad, using a training set of 1000 songs inspired by [another project](https://github.com/rasbt/musicmood) [2] based on the [Million Song Dataset](https://labrosa.ee.columbia.edu/millionsong/)[1]. A model such as this one could aid people with difficulties regarding emotion comprehension within a textual context and used to educate or orient them to understand more about the emotions of those around.
  
+ For further details on how I've trained the model, check the next page after running.
  -----
  
  ### References and credits:
@@ -53,3 +54,5 @@ navController.view.frame = introVc.view.frame
 
 PlaygroundPage.current.liveView = navController.view
 //run()
+
+//: [Next](@next)
