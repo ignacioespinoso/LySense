@@ -100,7 +100,6 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 lyric = loadToString(name: "lyric10", withExtension: ".txt")
             }
             
-            print("Lyric:\n\(lyric)")
             var isHappy: Bool
             var probability: Float
 //            Let's use the Machine Learning model!
@@ -123,7 +122,6 @@ public class IntroController: UIViewController, UIPickerViewDelegate, UIPickerVi
 //    Proccess content coming from the text field
     @objc func submitText2() {
         if let lyric = textWriter.text {
-            print("Lyric:\n\(lyric)")
             var isHappy: Bool
             var probability: Float
 //            Let's use the Machine Learning model!

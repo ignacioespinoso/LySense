@@ -1,5 +1,3 @@
-import Foundation
-import PlaygroundSupport
 import UIKit
 
 public class HappyController: UIViewController {
@@ -27,23 +25,23 @@ public class HappyController: UIViewController {
             imageView.center.y = 1200
             self.view.addSubview(imageView)
             UIView.animate(withDuration: 2, animations: {
-                imageView.frame = CGRect(x: 334, y: 150, width: 165, height: 165)
+                imageView.frame = CGRect(x: 324, y: 150, width: 165, height: 165)
             })
             
-            print("Probability: \(self.probability)")
+//            print("Probability: \(self.probability)")
 //            Defines probability subview, based on predicted results
-            let probabilityView = UILabel(frame: CGRect(x: 325, y: 638, width: 184, height: 22))
-            probabilityView.center.x = self.view.center.x
-            probabilityView.textColor = .black
-            probabilityView.text = "Probability: \(self.probability)%"
-            self.view.addSubview(probabilityView)
+//            let probabilityView = UILabel(frame: CGRect(x: 325, y: 638, width: 184, height: 22))
+//            probabilityView.center.x = self.view.center.x
+//            probabilityView.textColor = .black
+//            probabilityView.text = "Probability: \(self.probability)%"
+//            self.view.addSubview(probabilityView)
             
             let buttonWidth: CGFloat = 359.0
             let buttonHeight: CGFloat = 56.0
             
             //            Agree Button definition
             let agreeButton : UIButton = UIButton()
-            agreeButton.frame = CGRect(x: 238, y: 745, width: buttonWidth, height: buttonHeight)
+            agreeButton.frame = CGRect(x: 238, y: 822, width: buttonWidth, height: buttonHeight)
             let agreeImage = UIImage(named:"AgreeButton")
             agreeButton.setImage(agreeImage, for: .normal)
             agreeButton.addTarget(self, action: #selector(goToAgreeView), for: .touchUpInside)
@@ -51,7 +49,7 @@ public class HappyController: UIViewController {
             
             //            Disagree Button definition
             let disagreeButton : UIButton = UIButton()
-            disagreeButton.frame = CGRect(x: 238,y: 841, width: buttonWidth, height: buttonHeight)
+            disagreeButton.frame = CGRect(x: 238,y: 918, width: buttonWidth, height: buttonHeight)
             let dontAgreeImage = UIImage(named:"DontAgreeButton")
             disagreeButton.setImage(dontAgreeImage, for: .normal)
             disagreeButton.addTarget(self, action: #selector(goToDisagreeView), for: .touchUpInside)
